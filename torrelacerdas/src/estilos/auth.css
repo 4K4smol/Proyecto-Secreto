@@ -1,0 +1,140 @@
+/* Estilos generales para la página */
+body {
+    background-color: #1f1b2d; /* Fondo morado oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  /* Contenedor del formulario */
+  .auth-form {
+    background: #2e2a45; /* Fondo morado oscuro */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease;
+  }
+  
+  .auth-form:hover {
+    transform: none; /* Eliminamos el movimiento */
+  }
+  
+  .auth-form h2 {
+    margin-bottom: 20px;
+    color: #e74c3c; /* Rojo como color secundario */
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Estilos para los campos de entrada */
+  .auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    font-size: 1rem;
+    background-color: #f4f4f9; /* Fondo claro para los inputs */
+    color: #333;
+    transition: border-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .auth-form input:focus {
+    border-color: #8a2be2; /* Morado brillante cuando está enfocado */
+    outline: none;
+  }
+  
+  /* Botón de inicio de sesión en verde */
+  .auth-form button {
+    background: #28a745; /* Verde como color secundario */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+  }
+  
+  .auth-form button:hover {
+    background: #218838; /* Verde más oscuro al pasar el ratón */
+    transform: none; /* Eliminamos el movimiento */
+  }
+  
+  .auth-form p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  /* Botón de registro en rojo */
+  .register-button {
+    background: #e74c3c; /* Rojo como color secundario */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
+  }
+  
+  .register-button:hover {
+    background: #c0392b; /* Rojo más oscuro al pasar el ratón */
+    transform: none; /* Eliminamos el movimiento */
+  }
+  
+  /* Agregar efectos de brillo y glamour */
+  .auth-form {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .auth-form::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    animation: sparkle 4s infinite linear;
+    transform: rotate(30deg);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  @keyframes sparkle {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+  /* Asegúrate de que el contenido esté por encima del brillo */
+  .auth-form > * {
+    position: relative;
+    z-index: 1;
+  }
+  

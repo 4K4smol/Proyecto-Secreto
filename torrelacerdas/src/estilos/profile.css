@@ -1,0 +1,106 @@
+/* Contenedor principal del perfil */
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(145deg, #1c1830, #1f1b2d); /* Fondo morado con degradado */
+  padding: 20px;
+}
+
+.profile-card {
+  background: linear-gradient(145deg, #2e2a45, #37304f); /* Fondo morado con un degradado más suave */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: scale(1.03); /* Aumenta ligeramente al pasar el mouse */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.profile-header {
+  margin-bottom: 25px;
+}
+
+.profile-picture-large {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #e74c3c; /* Borde rojo */
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture-large:hover {
+  transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.6); /* Añade un brillo rojo */
+}
+
+.profile-name {
+  font-size: 2.2rem;
+  color: #e74c3c; /* Rojo */
+  margin-bottom: 10px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.profile-name:hover {
+  color: #ff6f61; /* Un tono rojo más brillante */
+}
+
+.profile-bio {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.profile-content {
+  margin-top: 20px;
+}
+
+.profile-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #28a745; /* Verde */
+  transition: color 0.3s ease;
+}
+
+.profile-content h3:hover {
+  color: #34d058; /* Verde más brillante */
+}
+
+/* Estilos para los iconos de redes sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  font-size: 2.2rem;
+  color: #fff;
+  background-color: #2e2a45; /* Fondo morado oscuro */
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  background-color: #28a745; /* Verde */
+  transform: scale(1.2); /* Aumenta el tamaño al pasar el mouse */
+  box-shadow: 0px 4px 15px rgba(40, 167, 69, 0.6); /* Añade un brillo verde */
+  color: #fff; /* Asegura que el icono se mantenga blanco */
+}
