@@ -1,6 +1,6 @@
-# Influencers de [Tu Ciudad]
+# Influencers de Torrelavega
 
-Una plataforma web para promover y conectar con los influencers más destacados de [Tu Ciudad].
+Una plataforma web para promover y conectar con los influencers más destacados de Torrelavega.
 
 ## Descripción
 
@@ -116,4 +116,4 @@ _Añade aquí imágenes o capturas de pantalla de la aplicación para mostrar su
 
 ---
 
-¡Gracias por visitar este proyecto! Esperamos que disfrutes explorando a los influencers de [Tu Ciudad].
+¡Gracias por visitar este proyecto! Esperamos que disfrutes explorando a los influencers de Torrelavega.
