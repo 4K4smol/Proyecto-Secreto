@@ -103,17 +103,4 @@ Este proyecto es una página web diseñada para promocionar a los influencers m�
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-## Contacto
-
-Para preguntas, sugerencias o reportar problemas:
-
-- **Email**: [tu_email@example.com](mailto:tu_email@example.com)
-- **GitHub**: [tu_usuario](https://github.com/tu_usuario)
-
-## Capturas de Pantalla
-
-_Añade aquí imágenes o capturas de pantalla de la aplicación para mostrar su apariencia._
-
----
-
 ¡Gracias por visitar este proyecto! Esperamos que disfrutes explorando a los influencers de Torrelavega.
