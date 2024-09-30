@@ -1,15 +1,3 @@
-
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Asegura que ocupe al menos la altura completa de la pantalla */
-}
-
-/* El contenido principal debe expandirse para ocupar el espacio disponible */
-.main-content {
-  flex: 1; /* Hace que el contenido crezca para llenar el espacio restante */
-}
-
 /* Estilos generales del footer */
 .footer {
   background-color: #2e2a45; /* Color de fondo del footer */
@@ -27,44 +15,50 @@
   color: #b3a6c9; /* Color de texto más claro */
 }
 
-.social-links {
+.footer .social-links {
   margin-top: 10px;
   display: flex;
   justify-content: center;
   gap: 15px;
 }
 
-.social-links a {
+.footer .social-links a {
   text-decoration: none;
   color: #fff;
   background-color: #540d6e; /* Color de fondo de los enlaces */
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 0.9rem;
+  padding: 10px;
+  border-radius: 50%; /* Hace los iconos circulares */
+  font-size: 1.2rem; /* Tamaño del icono */
   transition: all 0.3s ease;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Ancho y alto iguales para iconos */
+  height: 40px;
 }
 
-.social-links a:hover {
+.footer .social-links a:hover {
   background-color: #7d5ba6; /* Color de fondo al pasar el mouse */
   transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
 }
 
-.social-links a:active {
+.footer .social-links a:active {
   transform: translateY(0); /* Sin elevación al hacer clic */
 }
 
 @media (max-width: 600px) {
   .footer {
-      padding: 15px 0;
+    padding: 15px 0;
   }
 
   .footer p {
-      font-size: 0.8rem;
+    font-size: 0.8rem;
   }
 
-  .social-links a {
-      padding: 6px 10px;
-      font-size: 0.8rem;
+  .footer .social-links a {
+    padding: 8px;
+    font-size: 1rem; /* Ajusta el tamaño del icono en pantallas pequeñas */
+    width: 35px;
+    height: 35px;
   }
 }

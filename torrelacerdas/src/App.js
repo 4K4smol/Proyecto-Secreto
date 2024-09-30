@@ -12,7 +12,6 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import SearchResults from './pages/SearchResults';
 import NotFound from './pages/NotFound';
-
 const RootRedirect = () => {
   const { token } = useAuth();
   return token ? <Navigate to="/home" /> : <Navigate to="/login" />;

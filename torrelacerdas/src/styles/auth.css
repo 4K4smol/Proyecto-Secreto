@@ -1,138 +1,180 @@
 /* src/styles/auth.css */
 
-/* Estilos que solo afectan a las páginas de login y register */
-.auth-body {
-  height: 100%; /* Ocupa toda la pantalla */
-  margin: 0; /* Elimina los márgenes */
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  background-color: #1f1b2d; /* Fondo para que combine con el diseño */
-}
-
-.auth-body .auth-container {
-  margin-top: 300px;
-  max-width: 450px;
-  width: 100%; /* Asegura que el contenedor sea responsivo */
-  padding: 40px;
-  border: 2px solid #6a4686; /* Borde morado */
-  border-radius: 15px;
-  background-color: #2D283E; /* Fondo oscuro */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-
-
-.auth-body .auth-container h2 {
-  text-align: center;
-  color: #A349A4; /* Morado claro */
-  margin-bottom: 20px;
-  font-size: 28px;
-  border-bottom: 2px solid #A349A4;
-  padding-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.auth-body .auth-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.auth-body .auth-container form label{
- color: white;
+/* ====================================================
+   VARIABLES Y CONFIGURACIONES GENERALES
+   ==================================================== */
+   :root {
+    --primary-bg: #1f1b2d;
+    --card-bg: #2D283E;
+    --primary-color: #A349A4;
+    --focus-color: #A349A4;
+    --hover-bg-color: #922D92;
+    --input-bg: #1F1B24;
+    --input-border: #4A0D67;
+    --text-color: #fff;
+    --placeholder-color: #bbb;
+    --error-color: #E74C3C;
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    --input-shadow: 0 0 6px var(--focus-color);
+    --button-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --transition-speed: 0.3s ease;
+    --spacing-small: 8px;
+    --spacing-medium: 14px;
+    --border-radius: 8px;
+  }
+  
+  /* ====================================================
+     ESTILOS DEL CONTENEDOR PRINCIPAL
+     ==================================================== */
+  .auth-body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-bg);
+  }
+  
+  .auth-container {
+    margin-top: 300px;
+    max-width: 450px;
+    width: 100%;
+    padding: 40px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  }
+  
  
-}
-
-.auth-body .auth-container input {
-  padding: 14px;
-  margin: 8px 0;
-  border: 1px solid #4A0D67;
-  border-radius: 8px;
-  background-color: #1F1B24;
-  color: #fff;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.auth-body .auth-container input::placeholder {
-  color: #bbb;
-}
-
-.auth-body .auth-container input:focus {
-  border-color: #A349A4;
-  outline: none;
-  box-shadow: 0 0 6px #A349A4;
-}
-
-.auth-body .auth-container button {
-  padding: 14px;
-  background-color: #A349A4;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  font-weight: bold;
-  margin-top: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.auth-body .auth-container button:hover {
-  background-color: #922D92;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-.auth-body .auth-container .error {
-  color: #E74C3C;
-  margin-top: 10px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  background-color: #441414;
-  padding: 10px;
-  border-radius: 6px;
-}
-
-.auth-body .auth-container .register-link {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.auth-body .auth-container .register-link a {
-  color: #A349A4;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-.auth-body .auth-container .register-link a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* Media queries para pantallas pequeñas */
-@media (max-width: 500px) {
-  .auth-body .auth-container {
-    padding: 20px;
-    margin: 20px;
+  
+  /* ====================================================
+     TÍTULO DEL FORMULARIO
+     ==================================================== */
+  .auth-container h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+  }
+  
+  /* ====================================================
+     ESTILOS DEL FORMULARIO
+     ==================================================== */
+  .auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-small);
+  }
+  
+  .auth-container label {
+    color: var(--text-color);
+  }
+  
+  .auth-container input {
+    padding: var(--spacing-medium);
+    margin: var(--spacing-small) 0;
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+  }
+  
+  .auth-container input::placeholder {
+    color: var(--placeholder-color);
+  }
+  
+  .auth-container input:focus {
+    border-color: var(--focus-color);
+    outline: none;
+    box-shadow: var(--input-shadow);
   }
 
-  .auth-body .auth-container input,
-  .auth-body .auth-container button {
-    font-size: 16px;
+  /* ====================================================
+     BOTÓN DE INICIAR SESIÓN
+     ==================================================== */
+  .auth-container button {
+    padding: var(--spacing-medium);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: bold;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--button-shadow);
   }
-
-  .auth-body .auth-container h2 {
-    font-size: 22px;
+  
+  .auth-container button:hover {
+    background-color: var(--hover-bg-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   }
-
-  .auth-body .auth-container .error {
-    font-size: 12px;
+  
+  /* ====================================================
+     MENSAJES DE ERROR
+     ==================================================== */
+  .auth-container .error {
+    color: var(--error-color);
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #441414;
+    padding: 10px;
+    border-radius: var(--border-radius);
   }
-}
+  
+  /* ====================================================
+     ENLACE DE REGISTRO
+     ==================================================== */
+  .auth-container .register-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .auth-container .register-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color var(--transition-speed);
+  }
+  
+  .auth-container .register-link a:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+  }
+  
+  /* ====================================================
+     RESPONSIVIDAD
+     ==================================================== */
+  @media (max-width: 500px) {
+    .auth-container {
+      padding: 20px;
+      margin: 20px;
+    }
+  
+    .auth-container input,
+    .auth-container button {
+      font-size: 16px;
+    }
+  
+    .auth-container h2 {
+      font-size: 22px;
+    }
+  
+    .auth-container .error {
+      font-size: 12px;
+    }
+  }
+  

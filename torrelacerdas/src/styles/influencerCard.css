@@ -1,68 +1,108 @@
-/* src/styles/influencerCard.css */
-
 :root {
-  --color-card-background: #2e2a45; /* Morado oscuro */
-  --color-primary: #28a745;         /* Verde */
-  --color-secondary: #e74c3c;       /* Rojo */
-  --color-text: #fff;
-  --color-shadow: rgba(0, 0, 0, 0.5);
-  --color-hover-shadow: rgba(174, 123, 255, 0.7); /* Sombra morada */
-  --color-image-overlay: rgba(0, 0, 0, 0.6);
+  --card-background: #1f1a33; /* Fondo de la carta */
+  --card-border: #6c41a4;     /* Color del borde */
+  --card-shadow: rgba(108, 65, 164, 0.6); /* Sombra en morado */
+  --text-color: #fff;         /* Color del texto */
+  --button-background: #ff4f8b; /* Fondo del botón */
+  --button-hover: #ff3466;     /* Color del botón al hacer hover */
+  --button-text-color: #fff;   /* Color del texto del botón */
 }
 
 .influencer-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background-color: var(--color-card-background);
+  background-color: var(--card-background);
+  border: 2px solid var(--card-border);
   border-radius: 15px;
-  overflow: hidden;
-  text-decoration: none;
-  color: var(--color-text);
+  padding: 20px;
+  box-shadow: 0 8px 16px var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 10px var(--color-shadow);
-  width: 100%; /* Asegúrate de ajustar el ancho de acuerdo a tu contenedor */
-  max-width: 250px; /* Máximo ancho para la tarjeta */
+  margin: 20px 0; /* Espacio entre cartas */
+  max-width: 600px; /* Tamaño máximo para la carta */
 }
 
 .influencer-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px var(--color-hover-shadow);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px var(--card-shadow);
 }
 
 .profile-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  width: 100px; /* Ajusta el tamaño de la imagen */
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid var(--card-border);
+  margin-right: 20px; /* Espacio entre la imagen y el texto */
 }
 
-.influencer-card:hover .profile-image {
-  opacity: 0.9; /* Ligero oscurecimiento al hacer hover */
-  transform: scale(1.05);
+.influencer-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .influencer-name {
-  padding: 12px 0;
-  font-size: 1.1rem;
-  background-color: var(--color-image-overlay); /* Fondo semi-transparente */
-  width: 100%;
-  text-align: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 0;
 }
 
-.influencer-name:hover {
-  background-color: var(--color-primary); /* Verde al hacer hover */
-  color: #000; /* Cambio a color de texto oscuro */
+.influencer-name::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: var(--card-border);
+  margin-top: 5px;
 }
 
-/* Pequeño indicador de borde para la influencer destacada */
-.influencer-card.featured {
-  border: 3px solid var(--color-secondary); /* Borde rojo */
-  box-shadow: 0 0 15px var(--color-secondary);
+.influencer-bio {
+  font-size: 0.9rem;
+  color: #cfc6e3; /* Color del texto para la biografía */
+  margin: 8px 0;
+  background-color: rgba(48, 40, 66, 0.8); /* Fondo semi-transparente */
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block; /* Ajusta la biografía dentro del contenedor */
 }
 
-.influencer-card.featured:hover {
-  transform: scale(1.07); /* Un poco más de aumento para la destacada */
-  box-shadow: 0 0 25px var(--color-secondary);
+.profile-button {
+  display: inline-block;
+  background-color: var(--button-background);
+  color: var(--button-text-color);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.profile-button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .influencer-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .profile-image {
+    margin: 0 0 10px 0; /* Ajusta la imagen en dispositivos móviles */
+  }
+
+  .influencer-name {
+    text-align: center;
+  }
+
+  .profile-button {
+    margin: 10px 0;
+  }
 }

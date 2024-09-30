@@ -26,21 +26,34 @@
     --border-radius: 8px;
   }
   
-  /* ====================================================
-     ESTILOS GENERALES DEL CONTENEDOR
-     ==================================================== */
-  .contact-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: var(--spacing-large);
-    background-color: var(--color-fondo-form);
-    border-radius: var(--border-radius);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    color: var(--color-texto);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
+  /* Asegúrate de que el body y el contenedor principal ocupen toda la pantalla */
+body, html {
+
+  margin: 0;
+  padding: 0;
+  background-color: #1f1b2d; /* Color de fondo de toda la página */
+}
+
+.contact-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f1b2d; /* Mismo color que el fondo para toda la página */
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 0; /* Elimina el margen superior */
+  padding: var(--spacing-large);
+  background-color: var(--color-fondo-form);
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  color: var(--color-texto);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Asegúrate de que el contenedor ocupe todo el ancho disponible */
+}
  
   .contact-container h2 {
     margin-bottom: var(--spacing-medium);

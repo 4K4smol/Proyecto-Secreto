@@ -7,33 +7,43 @@
     --about-bg-color: #2e2a45;
     --about-text-color: #d3d3d3;
     --about-heading-color: #e0e0e0;
-    --about-border-radius: 10px;
-    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    --text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    --spacing-small: 10px;
-    --spacing-medium: 15px;
-    --spacing-large: 20px;
-    --heading-font-size: 2.2rem;
-    --text-font-size: 1.1rem;
+    --about-border-radius: 15px;
+    --about-padding: 30px;
+    --about-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    --about-transition: 0.3s ease-in-out;
+    --accent-color: #a57ef0;
+    --highlight-color: #fff;
+    --heading-font-size: 2.4rem;
+    --text-font-size: 1.2rem;
+    --line-height: 1.8;
+    --max-width-container: 800px;
+    --card-gradient: linear-gradient(135deg, #2e2a45, #3a3455);
+    --card-border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   /* ====================================================
      ESTILOS DEL CONTENEDOR PRINCIPAL
      ==================================================== */
   .about-container {
-    max-width: 800px;
-  margin: var(--spacing-large) auto;
-  padding: var(--spacing-large);
-  background-color: var(--about-bg-color);
-  color: var(--about-text-color);
-  border-radius: var(--about-border-radius);
-  box-shadow: var(--box-shadow);
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: calc(100vh - 200px); /* Altura mínima para ocupar la pantalla menos el espacio de header y footer */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    max-width: var(--max-width-container);
+    margin: 40px auto;
+    padding: var(--about-padding);
+    background: var(--card-gradient);
+    color: var(--about-text-color);
+    border-radius: var(--about-border-radius);
+    box-shadow: var(--about-shadow);
+    border: var(--card-border);
+    transition: transform var(--about-transition), box-shadow var(--about-transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+  
+  .about-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   }
   
   /* ====================================================
@@ -41,21 +51,36 @@
      ==================================================== */
   .about-container h2 {
     font-size: var(--heading-font-size);
-    margin-bottom: var(--spacing-medium);
+    margin-bottom: 20px;
     color: var(--about-heading-color);
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: var(--text-shadow);
-    padding-bottom: var(--spacing-small);
-    border-bottom: 2px solid var(--about-heading-color);
+    position: relative;
+    padding-bottom: 10px;
     display: inline-block;
-    transition: color 0.3s ease, border-color 0.3s ease;
+    border-bottom: 2px solid var(--accent-color);
+    transition: color var(--about-transition), border-color var(--about-transition);
+  }
+  
+  .about-container h2::after {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 5px auto 0;
+    border-radius: 2px;
+    transition: width var(--about-transition);
+  }
+  
+  .about-container h2:hover::after {
+    width: 100%;
   }
   
   .about-container h2:hover {
-    color: #fff;
-    border-color: #fff;
+    color: var(--highlight-color);
+    border-color: var(--highlight-color);
   }
   
   /* ====================================================
@@ -63,44 +88,49 @@
      ==================================================== */
   .about-container p {
     font-size: var(--text-font-size);
-    line-height: 1.6;
-    margin-bottom: var(--spacing-medium);
-    text-align: justify;
+    line-height: var(--line-height);
     color: var(--about-text-color);
-    transition: color 0.3s ease;
+    text-align: justify;
+    margin-bottom: 20px;
+    transition: color var(--about-transition), transform var(--about-transition);
   }
   
   .about-container p:hover {
-    color: #e8e8e8;
+    color: var(--highlight-color);
+    transform: scale(1.02);
   }
-  
+
+  .about-container a {
+    color: var(--highlight-color);
+  }
+
   /* ====================================================
-     ESTILOS DE IMÁGENES (SI SE AGREGAN)
+     ESTILOS DE LAS IMÁGENES
      ==================================================== */
   .about-container img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
-    margin: var(--spacing-medium) 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: var(--about-border-radius);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    margin: 20px 0;
+    transition: transform var(--about-transition), box-shadow var(--about-transition);
   }
   
   .about-container img:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
   }
   
   /* ====================================================
-     RESPONSIVIDAD
+     ESTILOS RESPONSIVOS
      ==================================================== */
   @media (max-width: 768px) {
     .about-container {
-      padding: var(--spacing-medium);
+      padding: 20px;
     }
   
     .about-container h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
   
     .about-container p {
@@ -110,11 +140,11 @@
   
   @media (max-width: 480px) {
     .about-container {
-      padding: var(--spacing-small);
+      padding: 15px;
     }
   
     .about-container h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
   
     .about-container p {

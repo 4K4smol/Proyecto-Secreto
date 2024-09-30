@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axiosInstance from '../axiosConfig';
-import "../styles/profile.css"; // Importar estilos específicos para el perfil
+import "../styles/profilePage.css"; // Importar estilos específicos para el perfil
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const ProfilePage = () => {
