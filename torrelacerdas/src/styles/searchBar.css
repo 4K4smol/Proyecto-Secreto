@@ -1,0 +1,44 @@
+/* Estilo para el formulario de búsqueda por nombre */
+.name-search-form {
+    display: grid;
+    grid-template-columns: 1fr auto; /* El input ocupará el espacio restante y el botón se ubicará a la derecha */
+    gap: 25px;
+    align-items: center; /* Alineación vertical */
+    width: 15%; /* Asegura que el formulario ocupe todo el ancho */
+}
+
+.name-search-form input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    font-size: 0.9rem;
+    width: 100%; /* Asegura que ocupe todo el espacio disponible */
+}
+
+.name-search-form input:focus {
+    box-shadow: 0 0 8px rgba(114, 70, 199, 0.5); /* Sombra morada */
+    background-color: #f8f8f8;
+}
+
+.name-search-form button {
+    padding: 10px 15px;
+    background: #e74c3c; /* Rojo */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    justify-self: end; /* Alinea el botón a la derecha dentro del grid */
+}
+
+.name-search-form button:hover {
+    background: #ff6f61; /* Rojo más claro */
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,198 @@
+/* src/styles/featuredInfluencer.css */
+
+/* ====================================================
+   VARIABLES DE COLOR Y CONFIGURACIONES GENERALES
+   ==================================================== */
+   :root {
+    --bg-card: #1f1b2d; /* Fondo principal del card */
+    --highlight-border: #a57ef0; /* Borde que resalta a la influencer */
+    --text-color: #ffffff; /* Color principal del texto */
+    --subtle-highlight: #8a2be2; /* Color de detalles y acentos */
+    --button-bg: #ff577f; /* Fondo del botón */
+    --button-hover: #ff3b6e; /* Fondo del botón en hover */
+    --shadow-main: rgba(0, 0, 0, 0.4); /* Sombra principal */
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra del card */
+    --transition-speed: 0.4s;
+    --font-main: 'Arial', sans-serif;
+    --glow-effect: #e0aaff;
+}
+
+/* ====================================================
+   ESTILOS DEL CONTENEDOR PRINCIPAL DEL INFLUENCER DESTACADO
+   ==================================================== */
+.featured-influencer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-card);
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    border: 2px solid var(--highlight-border);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+}
+
+.featured-influencer:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 4px 20px var(--highlight-border);
+}
+
+/* ====================================================
+   ESTILOS DE LA IMAGEN DEL INFLUENCER
+   ==================================================== */
+.featured-image {
+    flex-shrink: 0;
+    width: 260px;
+    height: 260px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 30px;
+    border: 3px solid var(--subtle-highlight);
+    box-shadow: 0 0 15px var(--shadow-main), 0 0 25px var(--highlight-border);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform var(--transition-speed);
+}
+
+.featured-influencer:hover .featured-image img {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px var(--glow-effect);
+}
+
+/* ====================================================
+   ESTILOS DE LA INFORMACIÓN DEL INFLUENCER
+   ==================================================== */
+.featured-info {
+    flex: 1;
+    text-align: left;
+    color: var(--text-color);
+    font-family: var(--font-main);
+}
+
+.featured-name {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.featured-name::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--highlight-border);
+    margin-top: 5px;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.featured-influencer:hover .featured-name::after {
+    width: 80px;
+}
+
+.featured-bio {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #d3d3d3;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+    text-align: justify;
+    transition: color var(--transition-speed);
+}
+
+/* ====================================================
+   ESTILOS DEL BOTÓN DE 'VER PERFIL'
+   ==================================================== */
+.follow-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    box-shadow: 0 4px 10px rgba(255, 87, 127, 0.3);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.follow-btn:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 87, 127, 0.4);
+}
+
+/* ====================================================
+   RESPONSIVIDAD PARA DISPOSITIVOS MÓVILES Y TABLETS
+   ==================================================== */
+@media (max-width: 768px) {
+    .featured-influencer {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .featured-image {
+        margin: 0 0 20px 0;
+        width: 200px;
+        height: 200px;
+    }
+
+    .featured-name {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .featured-bio {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .follow-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .featured-influencer {
+        padding: 15px;
+    }
+
+    .featured-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .featured-name {
+        font-size: 1.5rem;
+    }
+
+    .featured-bio {
+        font-size: 0.9rem;
+    }
+
+    .follow-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+}

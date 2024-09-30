@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktorrelacerdas=self.webpackChunktorrelacerdas||[]).push([[333],{333:(a,e,r)=>{r.r(e),r.d(e,{default:()=>i});r(43);var s=r(579);const i=()=>(0,s.jsxs)("div",{className:"about-container",children:[(0,s.jsx)("h2",{children:"Acerca de TORRE LAS CERDAS"}),(0,s.jsx)("p",{children:"Bienvenido a TORRE LAS CERDAS, una plataforma dedicada a promover y destacar a mujeres inspiradoras de diversas \xe1reas. Nuestro objetivo es brindar visibilidad y reconocimiento a aquellas que marcan la diferencia."})]})}}]);
+//# sourceMappingURL=333.01e28a23.chunk.js.map

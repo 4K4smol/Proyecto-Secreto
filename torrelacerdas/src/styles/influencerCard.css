@@ -1,0 +1,68 @@
+/* src/styles/influencerCard.css */
+
+:root {
+  --color-card-background: #2e2a45; /* Morado oscuro */
+  --color-primary: #28a745;         /* Verde */
+  --color-secondary: #e74c3c;       /* Rojo */
+  --color-text: #fff;
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-hover-shadow: rgba(174, 123, 255, 0.7); /* Sombra morada */
+  --color-image-overlay: rgba(0, 0, 0, 0.6);
+}
+
+.influencer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-card-background);
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px var(--color-shadow);
+  width: 100%; /* Asegúrate de ajustar el ancho de acuerdo a tu contenedor */
+  max-width: 250px; /* Máximo ancho para la tarjeta */
+}
+
+.influencer-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px var(--color-hover-shadow);
+}
+
+.profile-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.influencer-card:hover .profile-image {
+  opacity: 0.9; /* Ligero oscurecimiento al hacer hover */
+  transform: scale(1.05);
+}
+
+.influencer-name {
+  padding: 12px 0;
+  font-size: 1.1rem;
+  background-color: var(--color-image-overlay); /* Fondo semi-transparente */
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.influencer-name:hover {
+  background-color: var(--color-primary); /* Verde al hacer hover */
+  color: #000; /* Cambio a color de texto oscuro */
+}
+
+/* Pequeño indicador de borde para la influencer destacada */
+.influencer-card.featured {
+  border: 3px solid var(--color-secondary); /* Borde rojo */
+  box-shadow: 0 0 15px var(--color-secondary);
+}
+
+.influencer-card.featured:hover {
+  transform: scale(1.07); /* Un poco más de aumento para la destacada */
+  box-shadow: 0 0 25px var(--color-secondary);
+}

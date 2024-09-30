@@ -1,0 +1,70 @@
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Asegura que ocupe al menos la altura completa de la pantalla */
+}
+
+/* El contenido principal debe expandirse para ocupar el espacio disponible */
+.main-content {
+  flex: 1; /* Hace que el contenido crezca para llenar el espacio restante */
+}
+
+/* Estilos generales del footer */
+.footer {
+  background-color: #2e2a45; /* Color de fondo del footer */
+  padding: 20px 0;
+  text-align: center;
+  color: #fff; /* Color del texto */
+  border-top: 1px solid #444; /* Línea superior */
+  width: 100%; /* Asegura que el footer ocupe todo el ancho */
+  margin-top: auto; /* Empuja el footer a la parte inferior */
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #b3a6c9; /* Color de texto más claro */
+}
+
+.social-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #540d6e; /* Color de fondo de los enlaces */
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.social-links a:hover {
+  background-color: #7d5ba6; /* Color de fondo al pasar el mouse */
+  transform: translateY(-2px); /* Efecto de elevación al pasar el mouse */
+}
+
+.social-links a:active {
+  transform: translateY(0); /* Sin elevación al hacer clic */
+}
+
+@media (max-width: 600px) {
+  .footer {
+      padding: 15px 0;
+  }
+
+  .footer p {
+      font-size: 0.8rem;
+  }
+
+  .social-links a {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+  }
+}

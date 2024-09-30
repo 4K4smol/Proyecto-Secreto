@@ -1,0 +1,57 @@
+/* src/styles/mainLayout.css */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #1f1b2d; /* Fondo general */
+}
+
+main {
+  flex: 1; /* Hace que el contenido principal crezca para llenar el espacio */
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  background-color: #1f1b2d;
+}
+
+.content-container {
+  flex: 1; /* Asegura que este contenedor crezca si es necesario */
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #252133; 
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+/* src/styles/mainLayout.css */
+html, body {
+  height: 100%;
+  background-color: #1f1b2d; /* Asegura un fondo para toda la página */
+}
+
+/* src/styles/mainLayout.css */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la pantalla */
+  background-color: #1f1b2d; /* Fondo oscuro */
+  color: #fff;
+}
+
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.2); /* Borde semitransparente */
+  border-top: 8px solid #6a4686; /* Color principal del borde superior */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite; /* Animación de giro */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,104 @@
+/* src/styles/carousel.css */
+
+/* Contenedor principal del carrusel */
+.carousel-container {
+  width: 90%; /* Adapta al 90% del contenedor padre */
+  margin: 0 auto; /* Centrarse horizontalmente */
+  padding: 20px;
+  background-color: #1e1b2f;
+  border-radius: 15px;
+}
+
+/* Título del carrusel */
+.carousel-container h2 {
+  margin-bottom: 25px;
+  font-size: 2rem;
+  text-align: center; /* Centrar el texto */
+  color: #e0e0e0; /* Color ligeramente más suave */
+}
+
+/* Sección del carrusel */
+.influencers-carousel {
+  display: flex;
+  overflow-x: auto; /* Permitir desplazamiento horizontal */
+  overflow-y: hidden; /* Evitar scroll vertical */
+  scroll-behavior: smooth;
+  gap: 25px; /* Espacio entre tarjetas */
+  padding: 15px 0; /* Espaciado vertical */
+  scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+}
+
+.influencers-carousel::-webkit-scrollbar {
+  display: none; /* Ocultar scrollbar en navegadores Webkit */
+}
+
+/* Contenedor de las tarjetas */
+.carousel-wrapper {
+  display: flex;
+  flex-wrap: nowrap; /* Evita que las tarjetas se muevan a la siguiente línea */
+  gap: 20px; /* Ajusta el espacio entre las tarjetas */
+  overflow-x: auto; /* Asegura el desplazamiento horizontal si el contenido es demasiado ancho */
+  padding: 10px; /* Añade un poco de padding si es necesario */
+}
+
+/* Tarjeta individual de influencer */
+.influencer-card {
+  flex: 0 0 auto; /* Evitar que las tarjetas se estiren o encojan */
+  width: 220px; /* Ancho fijo para las tarjetas */
+  background-color: #3b3656;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  text-decoration: none; /* Quitar subrayado en enlaces */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para las tarjetas */
+}
+
+/* Efecto hover en tarjetas */
+.influencer-card:hover {
+  transform: scale(1.07);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Mayor sombra al hacer hover */
+}
+
+/* Imagen dentro de la tarjeta */
+.profile-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 3px solid #1e1b2f; /* Separador de color */
+}
+
+/* Nombre del influencer */
+.influencer-name {
+  padding: 12px 0;
+  font-size: 1.2rem;
+  color: #f1f1f1;
+  background-color: #282443; /* Fondo del nombre */
+  border-radius: 0 0 12px 12px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+  .carousel-container {
+    width: 95%;
+    margin: 15px auto;
+    padding: 10px; /* Reducir padding */
+  }
+
+  .influencers-carousel {
+    gap: 15px;
+  }
+
+  .influencer-card {
+    width: 160px;
+  }
+
+  .profile-image {
+    height: 160px;
+  }
+
+  .influencer-name {
+    font-size: 1rem;
+  }
+}

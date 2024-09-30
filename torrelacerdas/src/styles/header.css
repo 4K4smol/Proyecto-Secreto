@@ -1,0 +1,66 @@
+/* header.css */
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6a0dad; /* Morado */
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .logo .main-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-header ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-header ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .nav-header ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .user-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .username {
+    font-size: 18px;
+  }
+  
+  .logout-button {
+    background-color: #8a2be2; /* Morado más claro */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #5d3fd3; /* Morado más oscuro */
+  }
+  
+  .auth-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  
+  .auth-links a:hover {
+    text-decoration: underline;
+  }
+  

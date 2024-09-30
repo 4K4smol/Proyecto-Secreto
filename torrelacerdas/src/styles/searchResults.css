@@ -1,0 +1,34 @@
+/* src/styles/searchResults.css */
+
+.search-results-container {
+    padding: 20px;
+    background-color: #1f1b2d; /* Morado oscuro */
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading-container, 
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+h2 {
+    margin-top: 20px;
+    color: #34d058; /* Verde */
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+.carousel {
+    margin-top: 20px;
+}

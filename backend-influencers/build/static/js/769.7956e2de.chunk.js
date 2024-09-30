@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktorrelacerdas=self.webpackChunktorrelacerdas||[]).push([[769],{769:(e,s,a)=>{a.r(s),a.d(s,{default:()=>r});a(43);var n=a(475),c=a(579);const r=()=>(0,c.jsxs)("div",{className:"not-found-container",children:[(0,c.jsx)("h2",{children:"404 - P\xe1gina No Encontrada"}),(0,c.jsx)("p",{children:"Lo sentimos, la p\xe1gina que buscas no existe."}),(0,c.jsx)(n.N_,{to:"/",className:"home-link",children:"Volver al Inicio"})]})}}]);
+//# sourceMappingURL=769.7956e2de.chunk.js.map

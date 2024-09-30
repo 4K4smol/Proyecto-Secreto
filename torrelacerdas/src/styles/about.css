@@ -1,0 +1,124 @@
+/* src/styles/about.css */
+
+/* ====================================================
+   VARIABLES Y CONFIGURACIONES GENERALES
+   ==================================================== */
+   :root {
+    --about-bg-color: #2e2a45;
+    --about-text-color: #d3d3d3;
+    --about-heading-color: #e0e0e0;
+    --about-border-radius: 10px;
+    --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 20px;
+    --heading-font-size: 2.2rem;
+    --text-font-size: 1.1rem;
+  }
+  
+  /* ====================================================
+     ESTILOS DEL CONTENEDOR PRINCIPAL
+     ==================================================== */
+  .about-container {
+    max-width: 800px;
+  margin: var(--spacing-large) auto;
+  padding: var(--spacing-large);
+  background-color: var(--about-bg-color);
+  color: var(--about-text-color);
+  border-radius: var(--about-border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: calc(100vh - 200px); /* Altura mínima para ocupar la pantalla menos el espacio de header y footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  }
+  
+  /* ====================================================
+     ESTILOS DEL TÍTULO
+     ==================================================== */
+  .about-container h2 {
+    font-size: var(--heading-font-size);
+    margin-bottom: var(--spacing-medium);
+    color: var(--about-heading-color);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: var(--text-shadow);
+    padding-bottom: var(--spacing-small);
+    border-bottom: 2px solid var(--about-heading-color);
+    display: inline-block;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .about-container h2:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+  
+  /* ====================================================
+     ESTILOS DE LOS PÁRRAFOS
+     ==================================================== */
+  .about-container p {
+    font-size: var(--text-font-size);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-medium);
+    text-align: justify;
+    color: var(--about-text-color);
+    transition: color 0.3s ease;
+  }
+  
+  .about-container p:hover {
+    color: #e8e8e8;
+  }
+  
+  /* ====================================================
+     ESTILOS DE IMÁGENES (SI SE AGREGAN)
+     ==================================================== */
+  .about-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: var(--spacing-medium) 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .about-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* ====================================================
+     RESPONSIVIDAD
+     ==================================================== */
+  @media (max-width: 768px) {
+    .about-container {
+      padding: var(--spacing-medium);
+    }
+  
+    .about-container h2 {
+      font-size: 1.8rem;
+    }
+  
+    .about-container p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-container {
+      padding: var(--spacing-small);
+    }
+  
+    .about-container h2 {
+      font-size: 1.5rem;
+    }
+  
+    .about-container p {
+      font-size: 0.9rem;
+    }
+  }
+  

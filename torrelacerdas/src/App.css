@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+/* src/styles/app.css */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #2D283E; /* Fondo oscuro */
+}

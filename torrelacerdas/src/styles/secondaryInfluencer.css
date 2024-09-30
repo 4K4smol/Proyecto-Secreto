@@ -1,0 +1,199 @@
+/* src/styles/secondaryInfluencer.css */
+
+/* ====================================================
+   VARIABLES DE COLOR Y CONFIGURACIONES GENERALES
+   ==================================================== */
+   :root {
+    --bg-secondary-card: #2e2545; /* Fondo principal del card secundario */
+    --border-highlight-secondary: #a57ef0; /* Borde para destacar al influencer secundario */
+    --text-color-secondary: #ffffff; /* Color principal del texto */
+    --subtle-secondary-highlight: #8a2be2; /* Color para detalles y acentos */
+    --button-bg-secondary: #ff577f; /* Fondo del botón */
+    --button-hover-secondary: #ff3b6e; /* Fondo del botón en hover */
+    --shadow-secondary-main: rgba(0, 0, 0, 0.4); /* Sombra principal */
+    --card-shadow-secondary: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra del card */
+    --transition-speed: 0.3s;
+    --font-main: 'Arial', sans-serif;
+    --glow-effect-secondary: #e0aaff;
+}
+
+/* ====================================================
+   ESTILOS DEL CONTENEDOR PRINCIPAL DEL INFLUENCER SECUNDARIO
+   ==================================================== */
+.secondary-influencer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-secondary-card);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow-secondary);
+    border: 1px solid var(--border-highlight-secondary);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.secondary-influencer:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 4px 15px var(--border-highlight-secondary);
+}
+
+/* ====================================================
+   ESTILOS DE LA IMAGEN DEL INFLUENCER SECUNDARIO
+   ==================================================== */
+.featured-image {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 2px solid var(--subtle-secondary-highlight);
+    box-shadow: 0 0 10px var(--shadow-secondary-main);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform var(--transition-speed);
+}
+
+.secondary-influencer:hover .featured-image img {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--glow-effect-secondary);
+}
+
+/* ====================================================
+   ESTILOS DE LA INFORMACIÓN DEL INFLUENCER SECUNDARIO
+   ==================================================== */
+.featured-info {
+    flex: 1;
+    text-align: left;
+    color: var(--text-color-secondary);
+    font-family: var(--font-main);
+}
+
+.featured-name {
+    font-size: 1.8rem;
+    color: var(--text-color-secondary);
+    margin-bottom: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.featured-name::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: var(--border-highlight-secondary);
+    margin-top: 3px;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.secondary-influencer:hover .featured-name::after {
+    width: 60px;
+}
+
+.featured-bio {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #d3d3d3;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+    text-align: justify;
+    transition: color var(--transition-speed);
+}
+
+/* ====================================================
+   ESTILOS DEL BOTÓN DE 'VER PERFIL' SECUNDARIO
+   ==================================================== */
+.follow-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--button-bg-secondary);
+    color: var(--text-color-secondary);
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    box-shadow: 0 3px 6px rgba(255, 87, 127, 0.3);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.follow-btn:hover {
+    background-color: var(--button-hover-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(255, 87, 127, 0.4);
+}
+
+/* ====================================================
+   RESPONSIVIDAD PARA DISPOSITIVOS MÓVILES Y TABLETS
+   ==================================================== */
+@media (max-width: 768px) {
+    .secondary-influencer {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .featured-image {
+        margin: 0 0 15px 0;
+        width: 150px;
+        height: 150px;
+    }
+
+    .featured-name {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .featured-bio {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .follow-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .secondary-influencer {
+        padding: 10px;
+    }
+
+    .featured-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .featured-name {
+        font-size: 1.3rem;
+    }
+
+    .featured-bio {
+        font-size: 0.8rem;
+    }
+
+    .follow-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}

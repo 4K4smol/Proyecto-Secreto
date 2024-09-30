@@ -1,0 +1,155 @@
+/* src/styles/contact.css */
+
+/* ====================================================
+   VARIABLES Y CONFIGURACIONES GENERALES
+   ==================================================== */
+   :root {
+    --color-morado: #6a0dad;
+    --color-morado-claro: #8a2be2;
+    --color-verde: #28a745;
+    --color-rojo: #dc3545;
+    --color-fondo-form: #2e2a45;
+    --color-input-fondo: #1f1b2d;
+    --color-texto: #ffffff;
+    --color-placeholder: #aaa;
+    --input-border: #4a0dad;
+    --input-focus: #8a2be2;
+    --btn-background: var(--color-morado-claro);
+    --btn-hover-background: var(--color-morado);
+    --btn-shadow: rgba(0, 0, 0, 0.2);
+    --btn-hover-shadow: rgba(0, 0, 0, 0.4);
+  
+    /* Tamaños */
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 20px;
+    --border-radius: 8px;
+  }
+  
+  /* ====================================================
+     ESTILOS GENERALES DEL CONTENEDOR
+     ==================================================== */
+  .contact-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: var(--spacing-large);
+    background-color: var(--color-fondo-form);
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: var(--color-texto);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+ 
+  .contact-container h2 {
+    margin-bottom: var(--spacing-medium);
+    font-size: 2rem;
+    color: var(--color-morado-claro);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--color-morado-claro);
+    display: inline-block;
+    padding-bottom: var(--spacing-small);
+  }
+  
+  .contact-container p {
+    margin-bottom: var(--spacing-large);
+    font-size: 1rem;
+    color: #ccc;
+  }
+  
+  /* ====================================================
+     ESTILOS DEL FORMULARIO
+     ==================================================== */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+  }
+  
+  .contact-form label {
+    text-align: left;
+    font-weight: bold;
+    color: var(--color-texto);
+    margin-bottom: var(--spacing-small);
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: var(--spacing-small);
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-input-fondo);
+    color: var(--color-texto);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--color-placeholder);
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 5px var(--input-focus);
+  }
+  
+  /* Estilo específico para el área de texto */
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+    max-height: 200px;
+  }
+  
+  /* Estilos del botón de envío */
+  .contact-form button {
+    padding: var(--spacing-small) var(--spacing-large);
+    background-color: var(--btn-background);
+    color: var(--color-texto);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px var(--btn-shadow);
+  }
+  
+  .contact-form button:hover {
+    background-color: var(--btn-hover-background);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px var(--btn-hover-shadow);
+  }
+  
+  .contact-form button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px var(--btn-shadow);
+  }
+  
+  /* ====================================================
+     ESTILOS RESPONSIVOS
+     ==================================================== */
+  @media (max-width: 600px) {
+    .contact-container {
+      padding: var(--spacing-medium);
+    }
+  
+    .contact-container h2 {
+      font-size: 1.8rem;
+    }
+  
+    .contact-form input,
+    .contact-form textarea {
+      font-size: 0.9rem;
+    }
+  
+    .contact-form button {
+      padding: var(--spacing-small);
+      font-size: 0.9rem;
+    }
+  }
+  
