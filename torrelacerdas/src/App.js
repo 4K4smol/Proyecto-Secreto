@@ -12,6 +12,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import SearchResults from './pages/SearchResults';
 import NotFound from './pages/NotFound';
+import MapPage from './pages/MapPage';
+import InfluencersPage from './pages/InfluencersPage';
 const RootRedirect = () => {
   const { token } = useAuth();
   return token ? <Navigate to="/home" /> : <Navigate to="/login" />;
@@ -38,6 +40,9 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/search" element={<SearchResults />} />
+                <Route path="/" element={<Navigate to="/map" />} />
+                <Route path="/map" element={<MapPage />} />
+                <Route path="/influencers" element={<InfluencersPage />} />
               </Route>
             </Route>
 

@@ -1,108 +1,152 @@
-:root {
-  --card-background: #1f1a33; /* Fondo de la carta */
-  --card-border: #6c41a4;     /* Color del borde */
-  --card-shadow: rgba(108, 65, 164, 0.6); /* Sombra en morado */
-  --text-color: #fff;         /* Color del texto */
-  --button-background: #ff4f8b; /* Fondo del botón */
-  --button-hover: #ff3466;     /* Color del botón al hacer hover */
-  --button-text-color: #fff;   /* Color del texto del botón */
-}
+/* influencersPage.css */
 
-.influencer-card {
-  display: flex;
-  align-items: center;
-  background-color: var(--card-background);
-  border: 2px solid var(--card-border);
-  border-radius: 15px;
+/* Contenedor principal */
+.influencers-page {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
   padding: 20px;
-  box-shadow: 0 8px 16px var(--card-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin: 20px 0; /* Espacio entre cartas */
-  max-width: 600px; /* Tamaño máximo para la carta */
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #1d1a27;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
 }
 
-.influencer-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px var(--card-shadow);
+/* Header de la página */
+.influencers-page .header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  background-color: #2e2a3b;
+  border-radius: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.profile-image {
-  width: 100px; /* Ajusta el tamaño de la imagen */
-  height: 100px;
-  border-radius: 50%;
-  border: 2px solid var(--card-border);
-  margin-right: 20px; /* Espacio entre la imagen y el texto */
-}
-
-.influencer-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.influencer-name {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: var(--text-color);
+.influencers-page .municipio-title {
+  font-size: 1.8rem;
+  color: #a855f7;
   margin: 0;
 }
 
-.influencer-name::after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 3px;
-  background-color: var(--card-border);
-  margin-top: 5px;
-}
-
-.influencer-bio {
-  font-size: 0.9rem;
-  color: #cfc6e3; /* Color del texto para la biografía */
-  margin: 8px 0;
-  background-color: rgba(48, 40, 66, 0.8); /* Fondo semi-transparente */
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block; /* Ajusta la biografía dentro del contenedor */
-}
-
-.profile-button {
-  display: inline-block;
-  background-color: var(--button-background);
-  color: var(--button-text-color);
-  padding: 8px 16px;
-  border: none;
-  border-radius: 50px;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+.influencers-page .back-to-map {
+  color: #ff7f50;
   text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
-.profile-button:hover {
-  background-color: var(--button-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.influencers-page .back-to-map:hover {
+  color: #e256a1;
 }
 
-@media (max-width: 600px) {
-  .influencer-card {
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-  }
+/* Contenido principal */
+.influencers-page .content {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-content: start;
+  gap: 20px;
+}
 
-  .profile-image {
-    margin: 0 0 10px 0; /* Ajusta la imagen en dispositivos móviles */
-  }
+.influencers-page .no-influencers {
+  font-size: 1.2rem;
+  color: #c0c0c0;
+  text-align: center;
+  margin-top: 20px;
+}
 
-  .influencer-name {
-    text-align: center;
-  }
+/* Grid de influencers */
+.influencers-page .influencers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
 
-  .profile-button {
-    margin: 10px 0;
-  }
+.influencers-page .influencer-card {
+  background-color: #2e2a3b;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.influencers-page .influencer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Imagen de la influencer */
+.influencers-page .card-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.influencers-page .influencer-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #a855f7;
+  object-fit: cover;
+}
+
+/* Información de la influencer */
+.influencers-page .card-body {
+  text-align: center;
+  display: grid;
+  gap: 10px;
+}
+
+.influencers-page .influencer-name {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #fff;
+}
+
+.influencers-page .influencer-bio {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+  margin: 0;
+}
+
+/* Enlaces de redes sociales */
+.influencers-page .card-footer {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.influencers-page .influencer-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.influencers-page .influencer-links a {
+  color: #ff7f50;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.influencers-page .influencer-links a:hover {
+  color: #e256a1;
+}
+
+/* Spinner de carga */
+.influencers-page .loading-spinner {
+  color: #a855f7;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Mensaje de error */
+.influencers-page .error-message {
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
 }

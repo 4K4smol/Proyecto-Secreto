@@ -12,13 +12,13 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchInfluencer = async () => {
       try {
-        console.log(`Fetching influencer with ID: ${id}`); // Log para verificar el id
-        const response = await axiosInstance.get(`/influencers/${id}`);
-        console.log("Datos recibidos del servidor:", response.data); // Log para ver los datos recibidos
+        console.log(`Fetching influencer with ID: ${id}`);
+        const response = await axiosInstance.get(`/influencers/id/${id}`);
+        console.log("Datos recibidos del servidor:", response.data);
         setInfluencer(response.data);
       } catch (err) {
-        console.error("Error al obtener el influencer:", err); // Log de error
-        setError(err.response?.data?.message || err.message);
+        console.error("Error al obtener el influencer:", err);
+        setError(err.response?.data?.error || err.message);
       }
     };
 

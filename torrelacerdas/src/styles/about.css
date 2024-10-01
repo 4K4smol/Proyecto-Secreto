@@ -41,10 +41,6 @@
     text-align: left;
   }
   
-  .about-container:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-  }
   
   /* ====================================================
      ESTILOS DEL TÍTULO
@@ -101,7 +97,7 @@
   }
 
   .about-container a {
-    color: var(--highlight-color);
+    color: #a57ef0;
   }
 
   /* ====================================================

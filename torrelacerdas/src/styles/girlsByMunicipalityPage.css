@@ -1,0 +1,93 @@
+/* src/styles/girlsByMunicipalityPage.css */
+
+/* Contenedor principal de la página */
+.girls-page-container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 80vh;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título de la página */
+  .girls-page-container h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* Contenedor de la lista de chicas */
+  .girls-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Tarjeta de cada chica */
+  .girl-card {
+    background-color: #fff;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  
+  .girl-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Imagen de la chica */
+  .girl-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    max-height: 200px;
+  }
+  
+  /* Información de la chica */
+  .girl-info {
+    padding: 10px;
+  }
+  
+  .girl-info h4 {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    color: #ff577f;
+  }
+  
+  .girl-info p {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  /* Enlaces de redes sociales */
+  .girl-info a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .girl-info a:hover {
+    color: #0056b3;
+  }
+  
+  /* Mensaje cuando no hay chicas disponibles */
+  .no-girls-message {
+    text-align: center;
+    color: #777;
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  

@@ -26,21 +26,21 @@ const Header = () => {
           <li><Link to="/home">Inicio</Link></li>
           <li><Link to="/about">Acerca de</Link></li>
           <li><Link to="/contact">Contacto</Link></li>
+          <li><Link to="/map">Mapa</Link></li> {/* Enlace al mapa agregado */}
         </ul>
       </nav>
-        <NameSearchBar />
-        {token ? (
-          <div className="user-controls">
-            <span className="username">Bienvenido, {username}</span>
-            <button onClick={handleLogout} className="logout-button">Cerrar sesión</button>
-          </div>
-        ) : (
-          <div className="auth-links">
-            <Link to="/login">Iniciar Sesión</Link>
-            <Link to="/register">Registrarse</Link>
-          </div>
-        )}
-      
+      <NameSearchBar />
+      {token ? (
+        <div className="user-controls">
+          <span className="username">Bienvenido, {username}</span>
+          <button onClick={handleLogout} className="logout-button">Cerrar sesión</button>
+        </div>
+      ) : (
+        <div className="auth-links">
+          <Link to="/login">Iniciar Sesión</Link>
+          <Link to="/register">Registrarse</Link>
+        </div>
+      )}
     </header>
   );
 };

@@ -1,0 +1,101 @@
+/* src/styles/mapPage.css */
+
+/* Tooltip personalizado */
+.municipio-tooltip {
+    background-color: #7b1fa2; /* Fondo morado */
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    opacity: 0.9; /* Hacerlo un poco más visible */
+}
+
+.map-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1f1b2d; /* Fondo morado oscuro */
+    color: #ffffff; 
+    padding: 20px;
+    min-height: 70vh; /* Asegurar que ocupe toda la altura de la pantalla */
+}
+
+.map-title {
+    font-size: 2.8rem;
+    color: #ffffff; 
+    text-shadow: 2px 2px 6px #000000; /* Sombra de texto para mejor visibilidad */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.map-wrapper {
+    width: 90%;
+    max-width: 1200px;
+    height: 70vh; /* Altura adaptativa */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 2px solid #7b1fa2; /* Borde morado */
+}
+
+.leaflet-map-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: #7b1fa2;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.leaflet-popup-content {
+    font-size: 14px;
+    text-align: center;
+}
+
+.leaflet-popup-tip {
+    background: #7b1fa2;
+}
+
+.leaflet-control-attribution {
+    display: none; /* Eliminar la atribución si no es necesaria */
+}
+
+.leaflet-pane .leaflet-marker-icon {
+    display: none; /* Asegura que los marcadores sean invisibles */
+}
+
+/* Estilo morado para los bordes de los municipios */
+.leaflet-interactive {
+    stroke: #6a1b9a; /* Borde morado */
+    stroke-width: 2;
+    fill: #d1c4e9; /* Relleno morado claro */
+    fill-opacity: 0.5; /* Un poco más de opacidad */
+}
+
+.leaflet-interactive:hover {
+    stroke: #4a235a !important; /* Resaltar con morado oscuro */
+    stroke-width: 3;
+    fill: #ab47bc !important; /* Color de relleno al pasar el ratón */
+    fill-opacity: 0.7; /* Mayor opacidad al pasar el ratón */
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .map-wrapper {
+        height: 50vh; /* Ajustar la altura para pantallas pequeñas */
+    }
+
+    .map-title {
+        font-size: 2rem; /* Ajustar tamaño de la fuente */
+    }
+}

@@ -6,6 +6,7 @@ import { BlurhashCanvas } from "react-blurhash";
 import '../styles/featuredInfluencer.css';
 
 const FeaturedInfluencer = ({ influencer }) => {
+
   return (
     <section className="featured-influencer">
       <div className="featured-image">

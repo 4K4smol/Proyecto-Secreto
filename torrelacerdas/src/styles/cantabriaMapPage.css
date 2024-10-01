@@ -1,0 +1,22 @@
+.cantabria-map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1c1c2e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cantabria-map-container h2 {
+    color: #00ff00;
+    margin-bottom: 10px;
+  }
+  
+  .leaflet-container {
+    width: 100%;
+    height: 600px;
+    border: 2px solid #4a4a5c;
+    border-radius: 8px;
+  }
+  

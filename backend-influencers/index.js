@@ -1,11 +1,11 @@
-require('dotenv').config(); // Cargar variables de entorno
+require('dotenv').config();
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const mysql = require('mysql2');
-const helmet = require('helmet'); // Para seguridad adicional
-const rateLimit = require('express-rate-limit'); // Para limitar solicitudes
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const path = require('path');
 
 const app = express();
@@ -15,8 +15,8 @@ app.use(helmet());
 
 // Middleware para limitar solicitudes
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100, // Limitar cada IP a 100 solicitudes por ventana
+  windowMs: 15 * 60 * 1000,
+  max: 100,
   message: "Demasiadas solicitudes desde esta IP, por favor intenta de nuevo más tarde."
 });
 app.use(limiter);
@@ -24,7 +24,7 @@ app.use(limiter);
 // Middleware para analizar JSON y habilitar CORS
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000', // Reemplaza con el origen de tu frontend
+  origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
@@ -41,170 +41,96 @@ const db = mysql.createConnection({
 db.connect((err) => {
   if (err) {
     console.error("Error al conectar a la base de datos:", err);
-    return;
+    process.exit(1); // Terminar el proceso si no hay conexión
   }
   console.log("Conexión a MySQL exitosa");
 });
 
 // Llave secreta para JWT
-const secretKey = process.env.JWT_SECRET; 
+const secretKey = process.env.JWT_SECRET;
 
 // Middleware para verificar el token JWT
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
-  
-  if (!authHeader) {
-    return res.status(403).json({ message: "Token no proporcionado" });
-  }
+  if (!authHeader) return res.status(403).json({ message: "Token no proporcionado" });
 
   const token = authHeader.split(' ')[1];
-
-  if (!token) {
-    return res.status(403).json({ message: "Token no proporcionado" });
-  }
-
-  // Verificar el token
   jwt.verify(token, secretKey, (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ message: "Token no válido" });
-    }
-    req.userId = decoded.id; // Guardar el id del usuario en el objeto de solicitud
+    if (err) return res.status(401).json({ message: "Token no válido" });
+    req.userId = decoded.id;
     next();
   });
 };
 
 // Rutas de la API
-app.get('/api/influencers', (req, res) => {
-  db.query("SELECT * FROM influencers", (err, results) => {
+
+// Endpoint para obtener influencers por municipio_id
+app.get('/api/influencers/municipio/:municipio_id', (req, res) => {
+  const municipioId = req.params.municipio_id;
+  if (!municipioId) {
+    return res.status(400).json({ message: "ID de municipio no proporcionado" });
+  }
+  db.query('SELECT * FROM influencers WHERE municipio_id = ?', [municipioId], (err, results) => {
     if (err) {
-      return res.status(500).json({ error: err });
+      console.error('Error al obtener las influencers:', err);
+      return res.status(500).json({ message: 'Error al obtener las influencers' });
     }
     res.json(results);
   });
 });
 
-// Endpoint para la búsqueda de influencers por nombre utilizando el query parameter `q`
+// Endpoint para la búsqueda de influencers por nombre (parcial)
 app.get('/api/influencers/search', (req, res) => {
   const { q } = req.query;
-  
-  if (!q) {
-    return res.status(400).json({ error: "No se proporcionó un término de búsqueda" });
-  }
+  if (!q) return res.status(400).json({ error: "No se proporcionó un término de búsqueda" });
 
-  const sql = "SELECT * FROM influencers WHERE LOWER(name) LIKE ? LIMIT 1"; 
+  const sql = "SELECT * FROM influencers WHERE LOWER(name) LIKE ?";
   db.query(sql, [`%${q.toLowerCase()}%`], (err, results) => {
-    if (err) {
-      return res.status(500).json({ error: err });
-    }
+    if (err) return res.status(500).json({ error: err.message });
+    if (results.length === 0) return res.status(404).json({ error: "Influencer no encontrada" });
+    res.json(results);
+  });
+});
 
-    if (results.length === 0) {
-      return res.status(404).json({ error: "Influencer no encontrada" });
-    }
-
+// Endpoint para obtener un influencer por ID (numérico)
+app.get('/api/influencers/id/:id(\\d+)', (req, res) => {
+  const id = req.params.id;
+  db.query('SELECT * FROM influencers WHERE id = ?', [id], (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (results.length === 0) return res.status(404).json({ error: "Influencer no encontrado" });
     res.json(results[0]);
   });
 });
 
-// Endpoint para obtener un influencer por ID o nombre exacto
-app.get('/api/influencers/:identifier', (req, res) => {
-  const { identifier } = req.params;
-
-  // Verificar si el identifier es un número (ID) o un texto (nombre)
-  const isId = !isNaN(identifier);
-
-  let sql;
-  let queryParam;
-
-  if (isId) {
-    // Buscar por ID
-    sql = "SELECT * FROM influencers WHERE id = ?";
-    queryParam = [identifier];
-  } else {
-    // Buscar por nombre exacto (asegúrate de que la columna name está en minúsculas si estás utilizando lower)
-    sql = "SELECT * FROM influencers WHERE LOWER(name) = ?";
-    queryParam = [identifier.toLowerCase()];
-  }
-
-  db.query(sql, queryParam, (err, results) => {
-    if (err) {
-      return res.status(500).json({ error: err });
-    }
-
-    if (results.length === 0) {
-      return res.status(404).json({ error: "Influencer no encontrado" });
-    }
-
+// Endpoint para obtener un influencer por nombre exacto
+app.get('/api/influencers/name/:name', (req, res) => {
+  const name = req.params.name.toLowerCase();
+  db.query('SELECT * FROM influencers WHERE LOWER(name) = ?', [name], (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (results.length === 0) return res.status(404).json({ error: "Influencer no encontrado" });
     res.json(results[0]);
   });
 });
 
+// Ruta protegida que requiere autenticación
+app.get('/api/influencers', verifyToken, (req, res) => {
+  db.query("SELECT * FROM influencers", (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(results);
+  });
+});
 
-
-
-
-app.get('/api/influencers/search', (req, res) => {
-  const { q } = req.query;
-  
-  if (!q) {
-    return res.status(400).json({ error: "No se proporcionó un término de búsqueda" });
-  }
-
-  const sql = "SELECT * FROM influencers WHERE LOWER(name) LIKE ? LIMIT 1"; 
-  db.query(sql, [`%${q.toLowerCase()}%`], (err, results) => {
-    if (err) {
-      return res.status(500).json({ error: err });
-    }
-
-    if (results.length === 0) {
-      return res.status(404).json({ error: "Influencer no encontrada" });
-    }
-
+// Ruta para obtener un municipio por su ID
+app.get('/api/municipios/:municipioId', (req, res) => {
+  const { municipioId } = req.params;
+  db.query('SELECT * FROM municipios WHERE id = ?', [municipioId], (err, results) => {
+    if (err) return res.status(500).json({ error: 'Error al obtener el municipio' });
+    if (results.length === 0) return res.status(404).json({ error: 'Municipio no encontrado' });
     res.json(results[0]);
   });
 });
 
-app.post('/api/register', async (req, res) => {
-  const { username, email, password } = req.body;
-
-  db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
-    if (result.length > 0) {
-      return res.status(400).json({ message: "El usuario ya existe" });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword], (err, result) => {
-      if (err) {
-        return res.status(500).json({ error: err });
-      }
-      res.status(201).json({ message: "Usuario registrado con éxito" });
-    });
-  });
-});
-
-app.post('/api/login', (req, res) => {
-  const { email, password } = req.body;
-
-  db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
-    if (err || result.length === 0) {
-      return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
-    }
-
-    const user = result[0];
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
-    }
-
-    const token = jwt.sign({ id: user.id, email: user.email }, secretKey, { expiresIn: '1h' });
-    res.json({ message: "Inicio de sesión exitoso", token, username: user.username });
-  });
-});
-
-// Añade todas las rutas de tu API antes de esta parte
-
-// Sirve los archivos estáticos del build de React (esta parte va al final)
+// Sirve los archivos estáticos del build de React
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Cualquier otra ruta que no coincida debe responder con index.html

@@ -17,8 +17,11 @@ const NameSearchBar = () => {
         }
 
         const data = await response.json();
-        if (data && data.id) {
-          navigate(`/perfil/${data.id}`); // Actualiza la ruta
+        if (data && data.length === 1) {
+          navigate(`/perfil/${data[0].id}`); // Navega al perfil de la influencer
+        } else if (data && data.length > 1) {
+          // Si hay múltiples resultados, podrías mostrar una lista para que el usuario elija
+          alert('Se encontraron múltiples influencers. Por favor, refine su búsqueda.');
         } else {
           alert('No se encontró a la chica con ese nombre.');
         }
