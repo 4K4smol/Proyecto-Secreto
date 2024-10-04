@@ -2,29 +2,31 @@
 
 /* Contenedor principal del carrusel */
 .carousel-container {
-  width: 90%; /* Adapta al 90% del contenedor padre */
-  margin: 0 auto; /* Centrarse horizontalmente */
+  width: 90%;
+  margin: 0 auto;
   padding: 20px;
   background-color: #1e1b2f;
   border-radius: 15px;
+  position: relative; /* Para posicionar los botones laterales */
+  max-width: 1200px;
 }
 
 /* Título del carrusel */
 .carousel-container h2 {
   margin-bottom: 25px;
   font-size: 2rem;
-  text-align: center; /* Centrar el texto */
-  color: #e0e0e0; /* Color ligeramente más suave */
+  text-align: center;
+  color: #e0e0e0;
 }
 
 /* Sección del carrusel */
 .influencers-carousel {
   display: flex;
-  overflow-x: auto; /* Permitir desplazamiento horizontal */
-  overflow-y: hidden; /* Evitar scroll vertical */
+  overflow-x: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
-  gap: 25px; /* Espacio entre tarjetas */
-  padding: 15px 0; /* Espaciado vertical */
+  gap: 25px;
+  padding: 15px 0;
   scrollbar-width: none; /* Ocultar scrollbar en Firefox */
 }
 
@@ -32,33 +34,61 @@
   display: none; /* Ocultar scrollbar en navegadores Webkit */
 }
 
+/* Botones para rotar el carrusel */
+.carousel-button {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  background-color: #a855f7;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.carousel-button:hover {
+  background-color: #e256a1;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-button.left {
+  left: -40px; /* Posición a la izquierda */
+}
+
+.carousel-button.right {
+  right: -40px; /* Posición a la derecha */
+}
+
 /* Contenedor de las tarjetas */
 .carousel-wrapper {
   display: flex;
-  flex-wrap: nowrap; /* Evita que las tarjetas se muevan a la siguiente línea */
-  gap: 20px; /* Ajusta el espacio entre las tarjetas */
-  overflow-x: auto; /* Asegura el desplazamiento horizontal si el contenido es demasiado ancho */
-  padding: 10px; /* Añade un poco de padding si es necesario */
+  flex-wrap: nowrap;
+  gap: 20px;
 }
 
 /* Tarjeta individual de influencer */
-.influencer-card {
-  flex: 0 0 auto; /* Evitar que las tarjetas se estiren o encojan */
-  width: 220px; /* Ancho fijo para las tarjetas */
+.carousel-container .influencer-card {
+  flex: 0 0 auto;
+  width: 220px;
   background-color: #3b3656;
   border-radius: 12px;
   overflow: hidden;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #fff;
-  text-decoration: none; /* Quitar subrayado en enlaces */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para las tarjetas */
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Efecto hover en tarjetas */
 .influencer-card:hover {
   transform: scale(1.07);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Mayor sombra al hacer hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Imagen dentro de la tarjeta */
@@ -66,7 +96,7 @@
   width: 100%;
   height: 220px;
   object-fit: cover;
-  border-bottom: 3px solid #1e1b2f; /* Separador de color */
+  border-bottom: 3px solid #1e1b2f;
 }
 
 /* Nombre del influencer */
@@ -74,7 +104,7 @@
   padding: 12px 0;
   font-size: 1.2rem;
   color: #f1f1f1;
-  background-color: #282443; /* Fondo del nombre */
+  background-color: #282443;
   border-radius: 0 0 12px 12px;
 }
 
@@ -83,7 +113,7 @@
   .carousel-container {
     width: 95%;
     margin: 15px auto;
-    padding: 10px; /* Reducir padding */
+    padding: 10px;
   }
 
   .influencers-carousel {
@@ -100,5 +130,14 @@
 
   .influencer-name {
     font-size: 1rem;
+  }
+
+  /* Ajustar botones en pantallas pequeñas */
+  .carousel-button.left {
+    left: -20px;
+  }
+
+  .carousel-button.right {
+    right: -20px;
   }
 }

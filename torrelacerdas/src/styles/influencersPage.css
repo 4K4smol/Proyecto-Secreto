@@ -1,134 +1,156 @@
 /* influencersPage.css */
 
-body {
-    background-color: #1d1a27;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
-}
-
+/* Contenedor principal */
 .influencers-page {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
+    background-color: #1d1a27;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+  }
+  
+  /* Header de la página */
+  .influencers-page .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    padding: 10px 20px;
     background-color: #2e2a3b;
     border-radius: 10px;
-    margin-bottom: 20px;
+    padding: 10px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.municipio-title {
+  }
+  
+  .influencers-page .municipio-title {
     font-size: 1.8rem;
     color: #a855f7;
-}
-
-.back-to-map {
+    margin: 0;
+  }
+  
+  .influencers-page .back-to-map {
     color: #ff7f50;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
-}
-
-.back-to-map:hover {
+  }
+  
+  .influencers-page .back-to-map:hover {
     color: #e256a1;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.no-influencers {
+  }
+  
+  /* Contenido principal */
+  .influencers-page .content {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: start;
+    gap: 20px;
+  }
+  
+  .influencers-page .no-influencers {
     font-size: 1.2rem;
     color: #c0c0c0;
     text-align: center;
     margin-top: 20px;
-}
-
-.influencers-grid {
+  }
+  
+  /* Grid de influencers */
+  .influencers-page .influencers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     width: 100%;
-}
-
-.influencer-card {
+  }
+  
+  .influencers-page .influencer-card {
     background-color: #2e2a3b;
     border-radius: 15px;
     padding: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.influencer-card:hover {
+  }
+  
+  .influencers-page .influencer-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
-}
-
-.card-header {
+  }
+  
+  /* Imagen de la influencer */
+  .influencers-page .card-header {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-}
-
-.influencer-image {
+  }
+  
+  .influencers-page .influencer-image {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     border: 3px solid #a855f7;
     object-fit: cover;
-}
-
-.card-body {
+  }
+  
+  /* Información de la influencer */
+  .influencers-page .card-body {
     text-align: center;
-}
-
-.influencer-name {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .influencers-page .influencer-name {
     font-size: 1.5rem;
     margin: 0;
     color: #fff;
-}
-
-.influencer-bio {
+  }
+  
+  .influencers-page .influencer-bio {
     font-size: 0.9rem;
     color: #b3b3b3;
-    margin-top: 5px;
-}
-
-.card-footer {
+    margin: 0;
+  }
+  
+  /* Enlaces de redes sociales */
+  .influencers-page .card-footer {
     text-align: center;
     margin-top: 10px;
-}
-
-.influencer-links a {
-    color: #ff7f50;
+  }
+  
+  .influencers-page .influencer-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .influencers-page .influencer-links a {
+    color: #e256a1;
     text-decoration: none;
     font-size: 0.9rem;
-    margin: 0 5px;
-    display: inline-block;
     transition: color 0.3s;
-}
-
-.influencer-links a:hover {
-    color: #e256a1;
-}
-
-.loading-spinner {
+  }
+  
+  .influencers-page .influencer-links a:hover {
+    color: #a90d60;
+  }
+  
+  /* Spinner de carga */
+  .influencers-page .loading-spinner {
     color: #a855f7;
     font-size: 1.5rem;
     text-align: center;
-}
-
-.error-message {
+  }
+  
+  /* Mensaje de error */
+  .influencers-page .error-message {
     color: #ff4d4d;
     font-size: 1.2rem;
     text-align: center;
     margin-top: 20px;
-}
+  }
+  
+  
+  
+  

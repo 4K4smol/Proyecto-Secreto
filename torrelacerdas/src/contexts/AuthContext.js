@@ -52,13 +52,42 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // Función para registrar un nuevo usuario
+  const register = async (username, email, password) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Error al registrar el usuario');
+      }
+
+      // Actualizar el estado de autenticación
+      setAuth({
+        token: data.token,
+        username: data.username,
+      });
+
+      return true; // Indica que el registro fue exitoso
+    } catch (error) {
+      throw error;
+    }
+  };
+
   // Función para cerrar sesión
   const logout = () => {
     setAuth({ token: null, username: null });
   };
 
   return (
-    <AuthContext.Provider value={{ ...auth, login, logout }}>
+    <AuthContext.Provider value={{ ...auth, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

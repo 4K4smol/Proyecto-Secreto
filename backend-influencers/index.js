@@ -16,7 +16,7 @@ app.use(helmet());
 // Middleware para limitar solicitudes
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 10000,
   message: "Demasiadas solicitudes desde esta IP, por favor intenta de nuevo más tarde."
 });
 app.use(limiter);
@@ -129,6 +129,94 @@ app.get('/api/municipios/:municipioId', (req, res) => {
     res.json(results[0]);
   });
 });
+
+// Endpoint para registrar un nuevo usuario
+app.post('/api/register', (req, res) => {
+  const { username, email, password } = req.body;
+
+  // Validar campos obligatorios
+  if (!username || !email || !password) {
+    return res.status(400).json({ message: 'Por favor, completa todos los campos' });
+  }
+
+  // Verificar si el usuario ya existe
+  const checkUserQuery = 'SELECT * FROM users WHERE email = ?';
+  db.query(checkUserQuery, [email], (err, results) => {
+    if (err) {
+      console.error('Error al verificar el usuario:', err);
+      return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+
+    if (results.length > 0) {
+      return res.status(400).json({ message: 'El correo electrónico ya está registrado' });
+    }
+
+    // Encriptar la contraseña
+    bcrypt.hash(password, 10, (err, hashedPassword) => {
+      if (err) {
+        console.error('Error al encriptar la contraseña:', err);
+        return res.status(500).json({ message: 'Error interno del servidor' });
+      }
+
+      // Insertar el nuevo usuario en la base de datos
+      const insertUserQuery = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+      db.query(insertUserQuery, [username, email, hashedPassword], (err, result) => {
+        if (err) {
+          console.error('Error al registrar el usuario:', err);
+          return res.status(500).json({ message: 'Error interno del servidor' });
+        }
+
+        // Crear un token JWT
+        const token = jwt.sign({ id: result.insertId }, secretKey, { expiresIn: '1h' });
+
+        res.json({ message: 'Usuario registrado exitosamente', token, username });
+      });
+    });
+  });
+});
+
+// Endpoint para iniciar sesión
+app.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // Validar campos obligatorios
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Por favor, completa todos los campos' });
+  }
+
+  // Buscar el usuario por correo electrónico
+  const sql = 'SELECT * FROM users WHERE email = ?';
+  db.query(sql, [email], (err, results) => {
+    if (err) {
+      console.error('Error al buscar el usuario:', err);
+      return res.status(500).json({ message: 'Error interno del servidor' });
+    }
+
+    if (results.length === 0) {
+      return res.status(401).json({ message: 'Credenciales incorrectas' });
+    }
+
+    const user = results[0];
+
+    // Comparar la contraseña
+    bcrypt.compare(password, user.password, (err, isMatch) => {
+      if (err) {
+        console.error('Error al comparar la contraseña:', err);
+        return res.status(500).json({ message: 'Error interno del servidor' });
+      }
+
+      if (!isMatch) {
+        return res.status(401).json({ message: 'Credenciales incorrectas' });
+      }
+
+      // Crear un token JWT
+      const token = jwt.sign({ id: user.id }, secretKey, { expiresIn: '1h' });
+
+      res.json({ message: 'Inicio de sesión exitoso', token, username: user.username });
+    });
+  });
+});
+
 
 // Sirve los archivos estáticos del build de React
 app.use(express.static(path.join(__dirname, 'build')));

@@ -1,23 +1,21 @@
 // src/pages/Register.jsx
-import React, { useEffect ,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import '../styles/auth.css';
 
 const Register = () => {
   const { register } = useAuth();
-  
-// Añadir la clase 'auth-body' al body cuando se monta el componente
-useEffect(() => {
-  document.body.classList.add('auth-body');
-  
-  return () => {
-    // Quitar la clase cuando se desmonta el componente
-    document.body.classList.remove('auth-body');
-  };
-}, []);
+  const navigate = useNavigate();
 
-  
-  // Estado para los campos del formulario
+  useEffect(() => {
+    document.body.classList.add('auth-body');
+    
+    return () => {
+      document.body.classList.remove('auth-body');
+    };
+  }, []);
+
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,9 +28,9 @@ useEffect(() => {
     setError('');
     try {
       await register(username, email, password);
-      // La navegación se maneja dentro de la función register
+      navigate('/home');
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Error al registrar. Por favor, intenta de nuevo.');
     }
   };
 

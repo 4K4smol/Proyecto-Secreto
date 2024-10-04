@@ -1,9 +1,8 @@
 // src/components/Carousel.jsx
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import LazyLoad from 'react-lazyload';
-import { BlurhashCanvas } from "react-blurhash";
+import InfluencerCard from './InfluencerCard'; // Importamos el componente
 import '../styles/carousel.css';
+import '../styles/influencerCard.css';
 
 const Carousel = ({ influencers }) => {
   const carouselRef = useRef(null);
@@ -52,9 +51,19 @@ const Carousel = ({ influencers }) => {
     carouselRef.current.scrollLeft = scrollLeftAtStart.current - walk;
   };
 
+  // Funciones para manejar el scroll con los botones
+  const handleScrollLeft = () => {
+    carouselRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+  };
+
+  const handleScrollRight = () => {
+    carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+  };
+
   return (
     <div className="carousel-container">
       <h2>Otras Influencers Destacadas</h2>
+      <button className="carousel-button left" onClick={handleScrollLeft}>&lt;</button>
       <section 
         className="influencers-carousel"
         ref={carouselRef}
@@ -69,26 +78,11 @@ const Carousel = ({ influencers }) => {
       >
         <div className="carousel-wrapper">
           {influencers.map((influencer) => (
-            <Link to={`/perfil/${influencer.id}`} key={influencer.id} className="influencer-card">
-              <LazyLoad 
-                height={200} 
-                offset={100} 
-                placeholder={
-                  <BlurhashCanvas 
-                    hash="LEHV6nWB2yk8pyo0adR*.7kCMdnj" 
-                    width={200} 
-                    height={300} 
-                    punch={1} 
-                  />
-                }
-              >
-                <img src={influencer.image} alt={`Foto de perfil de ${influencer.name}`} className="profile-image" />
-              </LazyLoad>
-              <h3 className="influencer-name">{influencer.name}</h3>
-            </Link>
+            <InfluencerCard influencer={influencer} key={influencer.id} />
           ))}
         </div>
       </section>
+      <button className="carousel-button right" onClick={handleScrollRight}>&gt;</button>
     </div>
   );
 };

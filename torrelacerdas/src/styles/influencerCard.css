@@ -1,152 +1,101 @@
-/* influencersPage.css */
+/* src/styles/influencerCard.css */
 
-/* Contenedor principal */
-.influencers-page {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: #1d1a27;
-  color: #fff;
-  font-family: 'Arial', sans-serif;
-  min-height: 100vh;
-}
-
-/* Header de la página */
-.influencers-page .header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  background-color: #2e2a3b;
-  border-radius: 10px;
-  padding: 10px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.influencers-page .municipio-title {
-  font-size: 1.8rem;
-  color: #a855f7;
-  margin: 0;
-}
-
-.influencers-page .back-to-map {
-  color: #ff7f50;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.influencers-page .back-to-map:hover {
-  color: #e256a1;
-}
-
-/* Contenido principal */
-.influencers-page .content {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  align-content: start;
-  gap: 20px;
-}
-
-.influencers-page .no-influencers {
-  font-size: 1.2rem;
-  color: #c0c0c0;
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Grid de influencers */
-.influencers-page .influencers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  width: 100%;
-}
-
-.influencers-page .influencer-card {
-  background-color: #2e2a3b;
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.influencers-page .influencer-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
-}
-
-/* Imagen de la influencer */
-.influencers-page .card-header {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.influencers-page .influencer-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 3px solid #a855f7;
-  object-fit: cover;
-}
-
-/* Información de la influencer */
-.influencers-page .card-body {
-  text-align: center;
-  display: grid;
-  gap: 10px;
-}
-
-.influencers-page .influencer-name {
-  font-size: 1.5rem;
-  margin: 0;
-  color: #fff;
-}
-
-.influencers-page .influencer-bio {
-  font-size: 0.9rem;
-  color: #b3b3b3;
-  margin: 0;
-}
-
-/* Enlaces de redes sociales */
-.influencers-page .card-footer {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.influencers-page .influencer-links {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.influencers-page .influencer-links a {
-  color: #ff7f50;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s;
-}
-
-.influencers-page .influencer-links a:hover {
-  color: #e256a1;
-}
-
-/* Spinner de carga */
-.influencers-page .loading-spinner {
-  color: #a855f7;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-/* Mensaje de error */
-.influencers-page .error-message {
-  color: #ff4d4d;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 20px;
-}
+/* Contenedor principal de la tarjeta */
+.custom-influencer-card {
+    width: 220px;
+    background-color: #3b3656;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  /* Efecto hover en la tarjeta */
+  .custom-influencer-card:hover {
+    transform: scale(1.07);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Imagen de perfil */
+  .custom-profile-image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #a855f7; /* Borde morado alrededor de la imagen */
+  }
+  
+  /* Contenido de la tarjeta */
+  .custom-card-content {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Nombre del influencer */
+  .custom-influencer-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f1f1f1;
+  }
+  
+  /* Biografía del influencer */
+  .custom-influencer-bio {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    text-align: center;
+    padding: 0 10px; /* Un poco de espacio horizontal */
+  }
+  
+  /* Enlace al perfil */
+  .custom-ver-perfil {
+    background-color: #a855f7;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover del enlace al perfil */
+  .custom-ver-perfil:hover {
+    background-color: #e256a1;
+  }
+  
+  /* Ajustes para pantallas pequeñas */
+  @media (max-width: 600px) {
+    .custom-influencer-card {
+      width: 160px;
+    }
+  
+    .custom-profile-image {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .custom-influencer-name {
+      font-size: 1rem;
+    }
+  
+    .custom-influencer-bio {
+      font-size: 0.8rem;
+    }
+  
+    .custom-ver-perfil {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+    }
+  }
+  

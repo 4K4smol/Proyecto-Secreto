@@ -8,17 +8,14 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  // Añadir la clase 'auth-body' al body cuando se monta el componente
   useEffect(() => {
     document.body.classList.add('auth-body');
 
     return () => {
-      // Quitar la clase cuando se desmonta el componente
       document.body.classList.remove('auth-body');
     };
   }, []);
 
-  // Estado para los campos del formulario
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,10 +27,9 @@ const Login = () => {
     setError('');
     try {
       await login(email, password);
-      // Redirige directamente a /home tras el inicio de sesión exitoso
       navigate('/home');
     } catch (err) {
-      setError('Credenciales incorrectas. Por favor, intenta de nuevo.');
+      setError(err.message || 'Error al iniciar sesión. Por favor, intenta de nuevo.');
     }
   };
 
