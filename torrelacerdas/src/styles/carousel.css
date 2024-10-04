@@ -37,7 +37,7 @@
 /* Botones para rotar el carrusel */
 .carousel-button {
   position: absolute;
-  top: 60%;
+  top: 270px;
   transform: translateY(-50%);
   background-color: #a855f7;
   border: none;
